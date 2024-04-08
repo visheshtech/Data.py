@@ -1,0 +1,22 @@
+import requests
+start=int(input("Enter the starting no of Exam Form PU"))
+end = int(input("Enter the ending no of Exam Form   PU"))
+pairs=int(input("Enter the no of exam form you want to save in one file \n"))
+print("Lets start the task")
+for a in range(start,end,pairs):
+        name=("PU"+str(a)+ " - PU"+str(a+pairs)+".html")
+        print(name)
+        with open(name, 'wb') as file:
+            
+            for b in range (0,pairs):
+                c=str(a+b)
+                d=requests.get("https://nepexam.vbspuexams.com/NEP_Exam/NEP_Student_Print?Form_No=PU"+c+"&Session=2023-2024")
+                html_content = d.content
+                file.write(html_content)
+                
+
+        
+        
+        
+        
+
